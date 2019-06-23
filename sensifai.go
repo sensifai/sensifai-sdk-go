@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"mime/multipart"
@@ -12,7 +11,6 @@ import (
 	"net/url"
 	"os"
 	"strconv"
-	"time"
 )
 
 /*
