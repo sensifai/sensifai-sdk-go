@@ -220,9 +220,10 @@ GetResult : get result of a task
 func (s *SensifaiAPI) GetResult(taskID string) (result ResultResponse, err error) {
 	variables := map[string]interface{}{
 		"taskId": taskID,
+		"token":  s.Token,
 	}
 	payload := map[string]interface{}{
-		"query":     "query( $taskId: String! ){apiResult( taskId: $taskId ){ ...on ImageResult{isDone errors imageResults{nsfwResult{type probability value}logoResult{description}landmarkResult{description}taggingResult{label probability}faceResult{detectedBoxesPercentage probability detectedFace label}}} ... on VideoResult{fps duration isDone framesCount errors videoResults{startSecond endSecond startFrame endFrame thumbnailPath taggingResult{label probability}actionResult{label probability}celebrityResult{name frequency} sportResult{label probability}nsfwResult{probability type value}}}}}",
+		"query":     "query( $taskId: String!, $token: String! ){apiResult( taskId: $taskId, token: $token ){ ...on ImageResult{isDone errors imageResults{nsfwResult{type probability value}logoResult{description}landmarkResult{description}taggingResult{label probability}faceResult{detectedBoxesPercentage probability detectedFace label}}} ... on VideoResult{fps duration isDone framesCount errors videoResults{startSecond endSecond startFrame endFrame thumbnailPath taggingResult{label probability}actionResult{label probability}celebrityResult{name frequency} sportResult{label probability}nsfwResult{probability type value}}}}}",
 		"variables": variables,
 	}
 
